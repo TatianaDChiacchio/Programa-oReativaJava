@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+		//alert("hola");
+		
+		//tenemos que conectarle con los sse
+		var fuente=new EventSource("webapi/noticias");
+		fuente.onmessage=function(evento) {
+			
+			var objeto=JSON.parse(evento.data);
+			console.log(objeto);
+			if (objeto.texto=="final") {
+				
+				fuente.close();
+			}
+		}
+		
+		
+		var fuente2=new EventSource("webapi/noticias2");
+		fuente2.onmessage=function(evento) {
+			
+			var objeto=JSON.parse(evento.data);
+			console.log(objeto);
+			if (objeto.texto=="final") {
+				
+				fuente2.close();
+			}
+		}
+		
+		
+})
+</script>
+</head>
+<body>
+hola
+</body>
+</html>

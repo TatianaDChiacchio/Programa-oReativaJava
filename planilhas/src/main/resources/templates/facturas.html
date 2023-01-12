@@ -1,0 +1,15 @@
+<html>
+
+<body>
+
+
+<table>
+<tr th:each="factura: ${facturas}">
+    <td th:text="${factura.concepto}" />
+    <td th:text="${factura.importe}" />
+</tr>
+</table>
+
+
+</body>
+</html>
